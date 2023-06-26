@@ -1,7 +1,7 @@
-require './person.rb'
+require './person'
 
 class Teacher < Person
-  def initialize(specialization, age, name = "Unknown")
+  def initialize(specialization, age, name = 'Unknown')
     super(age, name)
     @specialization = specialization
   end
@@ -11,5 +11,5 @@ class Teacher < Person
   end
 end
 
-wiseman = Teacher.new("English", 42, "Wiseman")
+wiseman = Teacher.new('English', 42, 'Wiseman')
 puts wiseman.can_use_services?

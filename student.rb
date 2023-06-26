@@ -1,7 +1,7 @@
-require './person.rb'
+require './person'
 
 class Student < Person
-  def initialize(classroom, age, name = "Unknown", parent_permission: true)
+  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
@@ -11,5 +11,5 @@ class Student < Person
   end
 end
 
-paul = Student.new("6B", 16, "Paul")
-puts paul.play_hooky()
+paul = Student.new('6B', 16, 'Paul')
+puts paul.play_hooky
