@@ -33,19 +33,19 @@ class Person < Nameable
   end
 end
 
-mr_teacher = Person.new(42, "Mr. Teacher")
-hatchet_book = Book.new("Hatchet", "Gary Paulsen")
-got_book = Book.new("Game of Thrones", "Bearded fat guy")
-rental_1 = Rental.new("today", hatchet_book, mr_teacher)
-rental_2 = Rental.new("today", got_book, mr_teacher)
-rental_3 = Rental.new("yesterday", got_book, mr_teacher)
+mr_teacher = Person.new(42, 'Mr. Teacher')
+hatchet_book = Book.new('Hatchet', 'Gary Paulsen')
+got_book = Book.new('Game of Thrones', 'Bearded fat guy')
+rental1 = Rental.new('today', hatchet_book, mr_teacher)
+rental2 = Rental.new('today', got_book, mr_teacher)
+rental3 = Rental.new('yesterday', got_book, mr_teacher)
 
 puts got_book.rentals
 # => #<Rental:0x00007f0b10fe26b8>
 # => #<Rental:0x00007f0b10fe2640>
 
-puts rental_1.book.title
-puts rental_2.book.title
+puts rental1.book.title
+puts rental2.book.title
 # => Hatchet
 # => Game of Thrones
 
@@ -54,7 +54,7 @@ puts mr_teacher.rentals
 # => <Rental:0x00007f0b10fe26b8>
 # => <Rental:0x00007f0b10fe2640>
 
-puts rental_2.person.name
-puts rental_3.person.name
+puts rental2.person.name
+puts rental3.person.name
 # => Mr. Teacher
 # => Mr. Teacher

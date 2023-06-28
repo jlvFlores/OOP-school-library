@@ -5,7 +5,7 @@ class Classroom
   attr_accessor :label
 
   def initialize(label)
-    @label = label    
+    @label = label
     @students = []
   end
 
@@ -15,24 +15,24 @@ class Classroom
   end
 end
 
-class1A = Classroom.new('Class 1-A')
-midoriya = Student.new(16, "Midoriya")
-bakugo = Student.new(16, "Bakugo", class1A)
+class_1a = Classroom.new('Class 1-A')
+midoriya = Student.new(16, 'Midoriya')
+bakugo = Student.new(16, 'Bakugo', class_1a)
 
 puts midoriya.classroom
 puts bakugo.classroom
 # => Not yet assigned
 # => #<Classroom:0x00007ff659002970>
 
-puts class1A.students.map { |student| student.name}
-# => Bakugo
+puts class_1a.students
+# => #<Student:0x00007fed608d2778>
 
-class1A.add_student(midoriya)
+class_1a.add_student(midoriya)
 puts midoriya.classroom
 puts midoriya.classroom.label
 # => #<Classroom:0x00007ff659002970>
 # => Class 1-A
 
-puts class1A.students.map { |student| student.name}
-# => Bakugo
-# => Midoriya
+puts class_1a.students
+# => #<Student:0x00007fed608d2778>
+# => #<Student:0x00007fed608d2868>
