@@ -7,22 +7,22 @@ require 'date'
 class App
   def initialize()
     @books = [Book.new('Hatchet', 'Paul')]
-    @people = [Student.new(12, 'Ash', 'Not yet assigned', true)]
+    @people = [Student.new(12, 'Ash')]
     @rentals = []
   end
 
   def option(user_input)
     case user_input
     when 1
-      list_books()
+      list_books
     when 2
-      list_people()
+      list_people
     when 3
-      create_person()
+      create_person
     when 4
-      create_book()
+      create_book
     when 5
-      create_rental()
+      create_rental
     when 6
       puts 'Please enter the id of the person'
       print 'Id: '
@@ -38,10 +38,10 @@ class App
   end
 
   def list_people
-    @people.map do |person| 
+    @people.map do |person|
       tag = person.is_a?(Student) ? 'Student' : 'Teacher'
       puts "[#{tag}] ID: #{person.id} Name: #{person.name}, Age: #{person.age}"
-    end 
+    end
   end
 
   def create_person
@@ -54,22 +54,28 @@ class App
       age = gets.chomp
       print 'Name: '
       name = gets.chomp
-      if person_instance == 1
-        print 'Has parent permission? [Y/N]: '
-        resp = gets.chomp.capitalize
-        resp == 'Y' ? permission = true : permission = false
-        puts "Permission has been set to #{permission}"
-        @people.push(Student.new(age, name, 'Not yet assigned', permission))
-        puts 'The student was added successfully'
-      else
-        print 'Specialization: '
-        specialization = gets.chomp.capitalize
-        @people.push(Teacher.new(specialization, age, name))
-        puts 'The teacher was added successfully'
-      end
+      person_instance == 1 ? create_student(age, name) : create_teacher(age, name)
     else
-      puts "Invalid number"
+      puts 'Invalid number'
     end
+  end
+
+  def create_student(age, name)
+    print 'Has parent permission? [Y/N]: '
+    resp = gets.chomp.capitalize
+    permission = resp == 'Y'
+    puts "Permission has been set to #{permission}"
+    student = Student.new(age, name)
+    student.parent_permission = permission
+    @people.push(student)
+    puts 'The student was added successfully'
+  end
+
+  def create_teacher(age, name)
+    print 'Specialization: '
+    specialization = gets.chomp.capitalize
+    @people.push(Teacher.new(specialization, age, name))
+    puts 'The teacher was added successfully'
   end
 
   def create_book
@@ -84,31 +90,40 @@ class App
   end
 
   def create_rental
-    if @books.any?
-      if @people.any? 
-        puts 'Select a book from the following list by number'
-        @books.each_with_index { |book, index| puts " #{index}) Title: #{book.title}, Author: #{book.author}" }
-        book_number = gets.chomp
-        book = @books[book_number.to_i]
-
-        puts 'Select a person from the following list by number (not id)'
-        @people.each_with_index do |person, index| 
-          tag = person.is_a?(Student) ? 'Student' : 'Teacher'
-          puts " #{index}) [#{tag}] ID: #{person.id} Name: #{person.name}, Age: #{person.age}"
-        end
-        person_number = gets.chomp
-        person = @people[person_number.to_i]
-
-        current_date = Date.today
-        @rentals.push(Rental.new(current_date, book, person))
-        puts current_date
-        puts 'The rental instace was created successfully'
-      else 
-        puts 'There are no people in the library'
-      end
-    else
+    if @books.empty?
       puts 'There are no books in the library'
+      return
     end
+
+    if @people.empty?
+      puts 'There are no people in the library'
+      return
+    end
+
+    book = select_book
+    person = select_person
+
+    current_date = Date.today
+    @rentals.push(Rental.new(current_date, book, person))
+    puts current_date
+    puts 'The rental instance was created successfully'
+  end
+
+  def select_book
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts " #{index}) Title: #{book.title}, Author: #{book.author}" }
+    book_number = gets.chomp.to_i
+    @books[book_number]
+  end
+
+  def select_person
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_index do |person, index|
+      tag = person.is_a?(Student) ? 'Student' : 'Teacher'
+      puts " #{index}) [#{tag}] ID: #{person.id} Name: #{person.name}, Age: #{person.age}"
+    end
+    person_number = gets.chomp.to_i
+    @people[person_number]
   end
 
   def list_rentals_of(id)
