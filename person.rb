@@ -1,6 +1,6 @@
 require './nameable'
-require './capitalize_decorator'
-require './trimmer_decorator'
+require './decorators/capitalize_decorator'
+require './decorators/trimmer_decorator'
 
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
