@@ -18,7 +18,7 @@ class Options
     puts ' 7 - Exit'
     input = gets.chomp
     if input.to_i.positive? && input.to_i < 7
-      @app.option(input.to_i)
+      @app.useMethod(input.to_i)
       delay
     elsif input.to_i == 7
       puts 'Goodbye'
@@ -28,6 +28,7 @@ class Options
     end
   end
 
+  # UX sugar
   def delay
     sleep(0.5)
     list_options

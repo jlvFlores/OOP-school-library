@@ -6,21 +6,21 @@ require 'date'
 
 class App
   def initialize()
-    @books = [Book.new('Hatchet', 'Paul')]
-    @people = [Student.new(12, 'Ash')]
+    @books_manager = BooksManager.new([])
+    @people = []
     @rentals = []
   end
 
-  def option(user_input)
+  def useMethod(user_input)
     case user_input
     when 1
-      list_books
+      @books_manager.list_books
     when 2
       list_people
     when 3
       create_person
     when 4
-      create_book
+      @books_manager.create_book
     when 5
       create_rental
     when 6
@@ -31,10 +31,6 @@ class App
     else
       puts "How'd you do that?"
     end
-  end
-
-  def list_books
-    @books.map { |book| puts "Title: #{book.title}, Author: #{book.author}" }
   end
 
   def list_people
@@ -76,17 +72,6 @@ class App
     specialization = gets.chomp.capitalize
     @people.push(Teacher.new(specialization, age, name))
     puts 'The teacher was added successfully'
-  end
-
-  def create_book
-    puts "Please enter the book's"
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    new_book = Book.new(title, author)
-    @books.push(new_book)
-    print "The book '#{new_book.title}' by '#{new_book.author}' was added successfully"
   end
 
   def create_rental
@@ -134,5 +119,26 @@ class App
     else
       puts 'No rentals found for the specified person ID.'
     end
+  end
+end
+
+class BooksManager
+  def initialize(books)
+    @books = books
+  end
+
+  def list_books
+    @books.map { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+  end
+  
+  def create_book
+    puts "Please enter the book's"
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    new_book = Book.new(title, author)
+    @books.push(new_book)
+    print "The book '#{new_book.title}' by '#{new_book.author}' was added successfully"
   end
 end
