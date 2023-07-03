@@ -18,7 +18,7 @@ class Options
     puts ' 7 - Exit'
     input = gets.chomp
     if input.to_i.positive? && input.to_i < 7
-      @app.useMethod(input.to_i)
+      @app.use_method(input.to_i)
       delay
     elsif input.to_i == 7
       puts 'Goodbye'
