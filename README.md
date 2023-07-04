@@ -114,6 +114,13 @@ code .
 - Twitter: [@JoseVaz44312762](https://twitter.com/JoseVaz44312762)
 - LinkedIn: [Jose (Luis) Vazquez](https://www.linkedin.com/in/jose-luis-vazquez/)
 
+👤 **Author 2**
+
+👤 **TUMBU BARTHOLOMEW ELAD**
+- GitHub: [@githubhandle](https://github.com/elad237)
+- Twitter: [@twitterhandle](https://twitter.com/Elad59380989)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/tumbu-elad-896ab2183/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
