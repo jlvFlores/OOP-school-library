@@ -1,10 +1,10 @@
-require './book'
-require './rental'
-require './student'
-require './teacher'
-require './books_manager'
-require './rentals_manager'
-require './people_manager'
+require './books/book'
+require './books/books_manager'
+require './people/student'
+require './people/teacher'
+require './people/people_manager'
+require './rentals/rental'
+require './rentals/rentals_manager'
 require 'date'
 
 class App
