@@ -1,8 +1,8 @@
 class RentalsManager
-  def initialize(rentals, books_manager, people)
+  def initialize(rentals, books_manager, people_manager)
     @rentals = rentals
     @books = books_manager.books
-    @people = people
+    @people = people_manager.people
   end
 
   def list_rentals_of(id)
