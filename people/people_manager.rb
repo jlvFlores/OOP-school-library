@@ -1,3 +1,6 @@
+require './people/student'
+require './people/teacher'
+
 class PeopleManager
   attr_reader :people
 

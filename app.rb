@@ -1,16 +1,13 @@
-require './books/book'
 require './books/books_manager'
-require './people/student'
-require './people/teacher'
 require './people/people_manager'
-require './rentals/rental'
 require './rentals/rentals_manager'
-require 'date'
+require './data_manager'
 
 class App
   def initialize()
-    @books_manager = BooksManager.new([Book.new('The call of Cthulu', 'H.P. Lovecraft')])
-    @people_manager = PeopleManager.new([Student.new(12, 'Ash')])
+    @data_manager = DataManager.new
+    @books_manager = BooksManager.new([])
+    @people_manager = PeopleManager.new([])
     @rentals_manager = RentalsManager.new([])
   end
 
