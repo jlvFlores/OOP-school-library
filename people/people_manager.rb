@@ -15,17 +15,16 @@ class PeopleManager
     end
   end
 
-  def create_student(age, name, resp)
+  def create_student(id, name, age, resp)
     permission = resp == 'Y'
     puts "Permission has been set to #{permission}"
-    student = Student.new(age, name)
-    student.parent_permission = permission
+    student = Student.new(id, name, age, permission)
     @people.push(student)
     puts 'The student was added successfully'
   end
 
-  def create_teacher(age, name, specialization)
-    @people.push(Teacher.new(specialization, age, name))
+  def create_teacher(id, name, age, specialization)
+    @people.push(Teacher.new(id, name, age, specialization))
     puts 'The teacher was added successfully'
   end
 end
