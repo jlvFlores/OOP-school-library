@@ -1,4 +1,9 @@
+require './rentals/rental'
+require 'date'
+
 class RentalsManager
+  attr_reader :rentals
+
   def initialize(rentals)
     @rentals = rentals
   end

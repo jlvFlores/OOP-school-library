@@ -1,3 +1,5 @@
+require './books/book'
+
 class BooksManager
   attr_reader :books
 
