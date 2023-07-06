@@ -15,9 +15,9 @@ class App
   end
 
   def save_data
-    save_books
-    save_people
-    save_rentals
+    save_data_to_file(@books_manager.books, FILE_NAMES[0])
+    save_data_to_file(@people_manager.people, FILE_NAMES[1])
+    save_data_to_file(@rentals_manager.rentals, FILE_NAMES[2])
     puts 'Data has been saved.'
   end
 
@@ -124,30 +124,9 @@ class App
     end
   end
 
-  def save_books
-    file_location = File.join(DIRECTORY_PATH, FILE_NAMES[0])
-    books_array = @books_manager.books.map(&:to_hash)
-
-    json_data = JSON.generate(books_array)
-
-    File.write(file_location, json_data)
-  end
-
-  def save_people
-    file_location = File.join(DIRECTORY_PATH, FILE_NAMES[1])
-    people_array = @people_manager.people.map(&:to_hash)
-
-    json_data = JSON.generate(people_array)
-
-    File.write(file_location, json_data)
-  end
-
-  def save_rentals
-    file_location = File.join(DIRECTORY_PATH, FILE_NAMES[2])
-    rentals_array = @rentals_manager.rentals.map(&:to_hash)
-
-    json_data = JSON.generate(rentals_array)
-
+  def save_data_to_file(data, file_name)
+    file_location = File.join(DIRECTORY_PATH, file_name)
+    json_data = JSON.generate(data.map(&:to_hash))
     File.write(file_location, json_data)
   end
 
