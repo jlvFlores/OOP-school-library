@@ -1,10 +1,9 @@
 require './books/books_manager'
 require './people/people_manager'
 require './rentals/rentals_manager'
-require './constants'
+require './setup/constants'
 require 'json'
 
-require 'pry'
 class App
   include Constants
 

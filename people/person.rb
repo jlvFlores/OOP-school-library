@@ -1,4 +1,4 @@
-require './nameable'
+require './decorators/nameable'
 require './decorators/capitalize_decorator'
 require './decorators/trimmer_decorator'
 
