@@ -1,12 +1,19 @@
 require './people/person'
 
 class Teacher < Person
-  def initialize(specialization, age, name = 'Unknown')
-    super(age, name)
+  attr_reader :id, :name, :age
+  attr_reader :specialization
+
+  def initialize(id, name, age, specialization)
+    super(id, name, age)
     @specialization = specialization
   end
 
   def can_use_services?
     true
+  end
+
+  def to_hash
+    { id: @id, name: @name, age: @age, parent_permission: true, specialization: @specialization }
   end
 end
