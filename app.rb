@@ -4,6 +4,7 @@ require './rentals/rentals_manager'
 require './constants'
 require 'json'
 
+require 'pry'
 class App
   include Constants
 
@@ -98,7 +99,13 @@ class App
       puts " #{index}) Title: #{book.title}, Author: #{book.author}"
     end
     book_number = gets.chomp.to_i
-    @books_manager.books[book_number]
+    if book_number < @books_manager.books.length
+      @books_manager.books[book_number]
+    else
+      puts 'Please inset a valid number'
+      puts
+      select_book
+    end
   end
 
   def select_person
@@ -108,7 +115,13 @@ class App
       puts " #{index}) [#{tag}] ID: #{person.id} Name: #{person.name}, Age: #{person.age}"
     end
     person_number = gets.chomp.to_i
-    @people_manager.people[person_number]
+    if person_number < @people_manager.people.length
+      @people_manager.people[person_number]
+    else
+      puts 'Please inset a valid number'
+      puts
+      select_person
+    end
   end
 
   def save_books
