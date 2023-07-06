@@ -1,8 +1,7 @@
 require './people/person'
 
 class Teacher < Person
-  attr_reader :id, :name, :age
-  attr_reader :specialization
+  attr_reader :id, :name, :age, :specialization
 
   def initialize(id, name, age, specialization)
     super(id, name, age)

@@ -17,9 +17,11 @@ class Options
     puts ' 6 - List all rentals of a given person by their ID'
     puts ' 7 - Exit'
     input = gets.chomp
-    if input.to_i.positive? && input.to_i < 8
+    if input.to_i.positive? && input.to_i < 7
       use_method(input.to_i)
-      delay unless input.to_i == 7
+      delay
+    elsif input.to_i == 7
+      @app.save_data
     else
       puts 'Please choose a valid number'
       delay
@@ -40,8 +42,6 @@ class Options
       @app.create_rental
     when 6
       @app.list_rentals_of
-    when 7
-      @app.save_data
     else
       puts "How'd you do that?"
     end

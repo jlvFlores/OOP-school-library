@@ -9,6 +9,6 @@ class Book
   end
 
   def to_hash
-    {title: @title, author: @author, rentals: @rentals}
+    { title: @title, author: @author, rentals: @rentals }
   end
 end
