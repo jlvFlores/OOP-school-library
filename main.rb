@@ -1,5 +1,5 @@
-require './set_files'
-require './options'
+require './setup/set_files'
+require './setup/options'
 
 def main
   SetFiles.new

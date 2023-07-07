@@ -6,7 +6,6 @@ class Student < Person
 
   def initialize(id, name, age, parent_permission, classroom = 'Not yet assigned')
     super(id, name, age, parent_permission)
-    @parent_permission = parent_permission
     @classroom = classroom
     classroom.students << self if classroom != 'Not yet assigned'
   end

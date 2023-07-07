@@ -1,9 +1,9 @@
-require './nameable'
+require './decorators/nameable'
 require './decorators/capitalize_decorator'
 require './decorators/trimmer_decorator'
 
 class Person < Nameable
-  def initialize(id, name, age, parent_permission = 'true')
+  def initialize(id, name, age, parent_permission)
     super()
     @id = id
     @name = name

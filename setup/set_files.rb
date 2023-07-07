@@ -1,4 +1,4 @@
-require './constants'
+require './setup/constants'
 require 'fileutils'
 
 class SetFiles

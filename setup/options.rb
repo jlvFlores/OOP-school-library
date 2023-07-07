@@ -1,4 +1,4 @@
-require './app'
+require './setup/app'
 
 class Options
   def initialize()
