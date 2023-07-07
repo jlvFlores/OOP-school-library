@@ -16,6 +16,14 @@ describe Rental do
       expect(@rental).to be_instance_of(Rental)
     end
 
+    it "person's rentals are being updated" do
+      expect(@person.rentals).to eq([@rental])
+    end
+
+    it "book's rentals are being updated" do
+      expect(@book.rentals).to eq([@rental])
+    end
+
     it 'returns the correct hash structure when calling to_hash method' do
       expected_book_hash = { title: @book.title, author: @book.author, rentals: @book.rentals }
       expected_person_hash = { id: @person.id, name: @person.name, age: @person.age, parent_permission: true,
